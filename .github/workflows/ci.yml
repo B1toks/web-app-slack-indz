@@ -6,16 +6,17 @@ permissions:
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -57,16 +58,16 @@ jobs:
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.Slack_Webhook }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_COLOR: '#2eb886'
           SLACK_MESSAGE: '✅ CI pipeline пройшов успішно для ${{ github.repository }}!'
           SLACK_TITLE: 'CI успішно завершено'
-#try1
+
       - name: Notify Slack on failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.Slack_Webhook }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_COLOR: '#ff0000'
           SLACK_MESSAGE: '❌ CI pipeline провалився в ${{ github.repository }}!'
           SLACK_TITLE: 'CI помилка'
