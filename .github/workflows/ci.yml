@@ -57,7 +57,7 @@ jobs:
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK: ${{ secrets.Slack_Webhook }}
           SLACK_COLOR: '#2eb886'
           SLACK_MESSAGE: '✅ CI pipeline пройшов успішно для ${{ github.repository }}!'
           SLACK_TITLE: 'CI успішно завершено'
@@ -66,7 +66,7 @@ jobs:
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK: ${{ secrets.Slack_Webhook }}
           SLACK_COLOR: '#ff0000'
           SLACK_MESSAGE: '❌ CI pipeline провалився в ${{ github.repository }}!'
           SLACK_TITLE: 'CI помилка'
