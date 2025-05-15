@@ -61,7 +61,7 @@ jobs:
           SLACK_COLOR: '#2eb886'
           SLACK_MESSAGE: '✅ CI pipeline пройшов успішно для ${{ github.repository }}!'
           SLACK_TITLE: 'CI успішно завершено'
-
+#try1
       - name: Notify Slack on failure
         if: failure()
         uses: rtCamp/action-slack-notify@v2
