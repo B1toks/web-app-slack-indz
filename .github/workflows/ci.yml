@@ -52,7 +52,7 @@ jobs:
           docker build -t $IMAGE_NAME .
 
       - name: Push Docker image
-        run: docker push ${{ env.IMAGE_NAME }}
+        run: docker push ${{ env.IMAGE_NAME }} #ettr
 
       - name: Notify Slack on success
         if: success()
